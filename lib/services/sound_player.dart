@@ -9,7 +9,7 @@ class SoundPlayer {
   final AudioPlayer _player = AudioPlayer();
 
   Future<void> play(String assetPath) async {
-    await _player.stop(); // kill previous sound
+    await _player.stop();
     await _player.play(AssetSource(assetPath));
   }
 
