@@ -15,28 +15,28 @@ class CategoryRepository {
           id: 'f1_v12',
           name: 'V12 Engine',
           assetPath: 'sounds/f1_V12.mp3',
-          color: Color(0xFFE74C3C),
+          color: Color(0xFFDC0000), // Ferrari red
           description: 'Classic V12 scream',
         ),
         Sound(
           id: 'f1_v8',
           name: 'V8 Engine',
           assetPath: 'sounds/f1_V8.mp3',
-          color: Color(0xFFC0392B),
+          color: Color(0xFF0600EF), // Red Bull blue
           description: 'Powerful V8 roar',
         ),
         Sound(
           id: 'f1_v6_turbo',
           name: 'V6 Turbo',
           assetPath: 'sounds/f1_V6.mp3',
-          color: Color(0xFF992D22),
+          color: Color(0xFF00D2BE), // Mercedes teal
           description: 'Modern hybrid sound',
         ),
         Sound(
           id: 'f1_H16',
           name: 'f1_H16',
           assetPath: 'sounds/f1_H16.mp3',
-          color: Color(0xFFD35400),
+          color: Color(0xFF006F62), // Aston Martin green
           description: 'Early F1 engine',
         ),
       ],
