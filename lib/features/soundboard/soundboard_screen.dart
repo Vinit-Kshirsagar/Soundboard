@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../data/models/category.dart';
 import 'widgets/sound_button.dart';
 
-class SoundboardScreen extends StatelessWidget {
+class SoundboardScreen extends StatefulWidget {
   final Category category;
 
   const SoundboardScreen({
@@ -11,14 +11,25 @@ class SoundboardScreen extends StatelessWidget {
   });
 
   @override
+  State<SoundboardScreen> createState() => _SoundboardScreenState();
+}
+
+class _SoundboardScreenState extends State<SoundboardScreen> {
+  void _refreshSounds() {
+    setState(() {
+      // Triggers rebuild to update favorite icons
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          category.name,
+          widget.category.name,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: category.color.withOpacity(0.1),
+        backgroundColor: widget.category.color.withOpacity(0.1),
       ),
       body: Column(
         children: [
@@ -30,8 +41,8 @@ class SoundboardScreen extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  category.color.withOpacity(0.2),
-                  category.color.withOpacity(0.05),
+                  widget.category.color.withOpacity(0.2),
+                  widget.category.color.withOpacity(0.05),
                 ],
               ),
             ),
@@ -40,12 +51,12 @@ class SoundboardScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: category.color.withOpacity(0.2),
+                    color: widget.category.color.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(
-                    category.icon,
-                    color: category.color,
+                    widget.category.icon,
+                    color: widget.category.color,
                     size: 32,
                   ),
                 ),
@@ -55,7 +66,7 @@ class SoundboardScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        category.description,
+                        widget.category.description,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey[400],
@@ -63,7 +74,7 @@ class SoundboardScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '${category.sounds.length} sounds available',
+                        '${widget.category.sounds.length} sounds available',
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey[500],
@@ -79,7 +90,7 @@ class SoundboardScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: GridView.builder(
-                itemCount: category.sounds.length,
+                itemCount: widget.category.sounds.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
@@ -87,7 +98,10 @@ class SoundboardScreen extends StatelessWidget {
                   childAspectRatio: 1.1,
                 ),
                 itemBuilder: (context, index) {
-                  return SoundButton(sound: category.sounds[index]);
+                  return SoundButton(
+                    sound: widget.category.sounds[index],
+                    onFavoriteChanged: _refreshSounds,
+                  );
                 },
               ),
             ),

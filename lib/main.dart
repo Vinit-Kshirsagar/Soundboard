@@ -3,8 +3,14 @@ import 'core/theme/app_theme.dart';
 import 'features/home/home_screen.dart';
 import 'features/favorites/favorites_screen.dart';
 import 'features/settings/settings_screen.dart';
+import 'services/storage_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize storage before running app
+  await StorageService().init();
+  
   runApp(const SoundboardApp());
 }
 

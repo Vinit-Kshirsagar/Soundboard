@@ -96,7 +96,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ListTile(
                   leading: const Icon(Icons.info_outline),
                   title: const Text('Version'),
-                  trailing: const Text('1.0.0'),
+                  trailing: const Text('1.0.2'),
                 ),
                 ListTile(
                   leading: const Icon(Icons.rate_review),
