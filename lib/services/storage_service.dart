@@ -8,6 +8,9 @@ class StorageService {
   static const String _favoritesKey = 'favorite_sound_ids';
   SharedPreferences? _prefs;
 
+  // Public getter for widget service
+  SharedPreferences? get prefs => _prefs;
+
   // Initialize (call this in main.dart before runApp)
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();

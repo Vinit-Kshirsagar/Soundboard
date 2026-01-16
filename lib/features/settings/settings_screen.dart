@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widget_config_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -23,6 +24,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         children: [
           const SizedBox(height: 16),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Widget',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          Card(
+            margin: const EdgeInsets.all(16),
+            child: ListTile(
+              leading: const Icon(Icons.widgets),
+              title: const Text('Home Screen Widget'),
+              subtitle: const Text('Configure widget sound'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WidgetConfigScreen(),
+                  ),
+                );
+              },
+            ),
+          ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
@@ -96,7 +125,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ListTile(
                   leading: const Icon(Icons.info_outline),
                   title: const Text('Version'),
-                  trailing: const Text('1.0.2'),
+                  trailing: const Text('1.2.0'),
                 ),
                 ListTile(
                   leading: const Icon(Icons.rate_review),
